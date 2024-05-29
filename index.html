@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Music Streaming - Login</title>
+<style>
+/* Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+#login {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#loginForm {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #444;
+}
+
+#loginMsg {
+  color: red;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Music Streaming</h1>
+  <img src="https://th.bing.com/th/id/OIP.Wb08J3X_EOsmesXpNfu_fgHaA8?rs=1&pid=ImgDetMain" alt="Logo" id="logo">
+</header>
+<main>
+  <section id="login">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p id="loginMsg"></p>
+    <a href="register.html">Register</a>
+  </section>
+</main>
+<script>
+// JavaScript
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Fetch input values
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  
+  // Check if stored credentials match input
+  var storedPassword = localStorage.getItem(username);
+  
+  if (storedPassword === password) {
+    // Redirect to music page
+    window.location.href = 'music.html';
+  } else {
+    // Display error message
+    document.getElementById('loginMsg').innerText = 'Incorrect username or password.';
+  }
+});
+</script>
+</body>
+</html>

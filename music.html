@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reproductor de Música</title>
+<style>
+/* Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('https://static.videezy.com/system/resources/thumbnails/000/051/228/original/23537_Abstract-line-of-musical-notes-background_HD_BG.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  height: auto;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+#media {
+  margin-top: 20px;
+}
+
+#fileInput {
+  margin-bottom: 20px;
+}
+
+#youtubeDownloader {
+  margin-top: 20px;
+}
+
+#youtubeDownloader input {
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+}
+
+#youtubeDownloader button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#youtubeDownloader button:hover {
+  background-color: #555;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ddd;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Reproductor de Música</h1>
+  <p style="font-size: 14px;">Fernando Gómez</p>
+  <img src="https://th.bing.com/th/id/OIP.Wb08J3X_EOsmesXpNfu_fgHaA8?rs=1&pid=ImgDetMain" alt="Logo" id="logo">
+</header>
+<main>
+  <section class="description">
+    <p>Sube tus archivos de música y videos para reproducirlos directamente en esta página.</p>
+    <p>Si deseas descargar videos de YouTube, te recomendamos usar un bloqueador de anuncios.</p>
+  </section>
+  <section id="media">
+    <input type="file" id="fileInput" accept="audio/*,video/*">
+    <audio id="audioPlayer" controls style="width: 100%; display: none;">
+      Your browser does not support the audio element.
+    </audio>
+    <video id="videoPlayer" controls style="width: 100%; display: none;">
+      Your browser does not support the video element.
+    </video>
+  </section>
+  <section id="youtubeDownloader">
+    <h2>Descargador de Videos</h2>
+    <input type="text" id="youtubeUrl" placeholder="Enter YouTube URL here">
+    <button id="downloadBtn">Download</button>
+  </section>
+</main>
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const audioPlayer = document.getElementById('audioPlayer');
+  const videoPlayer = document.getElementById('videoPlayer');
+
+  fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+
+    if (file.type.startsWith('audio')) {
+      audioPlayer.src = url;
+      audioPlayer.style.display = 'block';
+      videoPlayer.style.display = 'none';
+    } else if (file.type.startsWith('video')) {
+      videoPlayer.src = url;
+      videoPlayer.style.display = 'block';
+      audioPlayer.style.display = 'none';
+    }
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', function() {
+    const youtubeUrl = document.getElementById('youtubeUrl').value;
+    const downloadUrl = youtubeUrl.replace('youtube.com', 'youtubepp.com');
+    window.open(downloadUrl, '_blank');
+  });
+</script>
+</body>
+</html>

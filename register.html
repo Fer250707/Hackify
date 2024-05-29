@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Music Streaming - Register</title>
+<style>
+/* Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+#register {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#registerForm {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #444;
+}
+
+#registerMsg {
+  color: green;
+}
+
+#loginLink {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Music Streaming</h1>
+  <img src="https://th.bing.com/th/id/OIP.Wb08J3X_EOsmesXpNfu_fgHaA8?rs=1&pid=ImgDetMain" alt="Logo" id="logo">
+</header>
+<main>
+  <section id="register">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <div class="input-group">
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+      </div>
+      <div class="input-group">
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <p id="registerMsg"></p>
+    <button id="loginLink">Back to Login</button>
+  </section>
+</main>
+<script>
+// JavaScript
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Fetch input values
+  var newUsername = document.getElementById('newUsername').value;
+  var newPassword = document.getElementById('newPassword').value;
+  
+  // Simulate storing the new user's credentials (for demonstration purposes)
+  localStorage.setItem(newUsername, newPassword);
+  
+  // Display success message
+  document.getElementById('registerMsg').innerText = 'Registration successful. You can now login.';
+});
+
+// Redirect to login page when "Back to Login" button is clicked
+document.getElementById('loginLink').addEventListener('click', function() {
+  window.location.href = 'index.html';
+});
+</script>
+</body>
+</html>
